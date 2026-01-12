@@ -15,26 +15,17 @@ import os
 import logging
 import time
 import re
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
-from webdriver_manager.chrome import ChromeDriverManager
+opts = Options()
+# opts.add_argument("--headless=new")  # optional for headless mode
 
-def build_chrome_driver(headless: bool = True) -> webdriver.Chrome:
-    opts = Options()
-    if headless:
-        # Modern headless flag for Chrome 109+
-        opts.add_argument("--headless=new")
-    # Stability flags (especially useful in Docker/CI)
-    opts.add_argument("--no-sandbox")
-    opts.add_argument("--disable-dev-shm-usage")
-    opts.add_argument("--disable-gpu")
+service = Service(r"C:\Users\ahmed.laminediabate\OneDrive - LifeWorks\Desktop\chromedriver-win32\chromedriver.exe")  # <-- your local path
+driver = webdriver.Chrome(service=service, options=opts)
 
-    # Use webdriver_manager to obtain a driver path
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=opts)
-    return driver
 
 
 from urllib.parse import urljoin, quote
