@@ -20,7 +20,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 
 opts = Options()
-service = service (r"C:\Users\ahmed.laminediabate\OneDrive - LifeWorks\Desktop\chrome-win32\chrome.exe")
+service = Service (r"C:\Users\ahmed.laminediabate\OneDrive - LifeWorks\Desktop\chrome-win32\chrome.exe")
 driver = webdriver.Chrome(service=service, options =opts)
 
 from urllib.parse import urljoin, quote
