@@ -444,10 +444,6 @@ class NewsAggregator:
             options.add_argument("--disable-dev-shm-usage")
             options.add_argument("--disable-gpu")
             options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
-            try:
-                self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-            except Exception as e:
-                logger.error(f"Failed to initialize Selenium driver: {str(e)}")
                 return None
         return self.driver
 
