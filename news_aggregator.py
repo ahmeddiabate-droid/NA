@@ -438,13 +438,7 @@ class NewsAggregator:
 
     def _get_selenium_driver(self):
         if self.driver is None:
-            options = webdriver.ChromeOptions()
-            options.add_argument("--headless")
-            options.add_argument("--no-sandbox")
-            options.add_argument("--disable-dev-shm-usage")
-            options.add_argument("--disable-gpu")
-            options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
-        return None
+            opts = Options()
         return self.driver
 
     def _fetch_with_selenium(self, url: str, wait_time: int = 10) -> str:
