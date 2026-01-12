@@ -444,7 +444,7 @@ class NewsAggregator:
             options.add_argument("--disable-dev-shm-usage")
             options.add_argument("--disable-gpu")
             options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
-                return None
+        return None
         return self.driver
 
     def _fetch_with_selenium(self, url: str, wait_time: int = 10) -> str:
