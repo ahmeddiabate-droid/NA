@@ -15,19 +15,12 @@ import os
 import logging
 import time
 import re
-
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-
-opts = Options()
-# opts.add_argument("--headless=new")  # optional for headless mode
-
-service = Service(r"C:\Users\ahmed.laminediabate\OneDrive - LifeWorks\Desktop\chromedriver-win32\chromedriver.exe")  # <-- your local path
-driver = webdriver.Chrome(service=service, options=opts)
-
-
-
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import urljoin, quote
 
 # Configure logging
@@ -438,7 +431,17 @@ class NewsAggregator:
 
     def _get_selenium_driver(self):
         if self.driver is None:
-            opts = Options()
+            options = webdriver.ChromeOptions()
+            options.add_argument("--headless")
+            options.add_argument("--no-sandbox")
+            options.add_argument("--disable-dev-shm-usage")
+            options.add_argument("--disable-gpu")
+            options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+            try:
+                self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+            except Exception as e:
+                logger.error(f"Failed to initialize Selenium driver: {str(e)}")
+                return None
         return self.driver
 
     def _fetch_with_selenium(self, url: str, wait_time: int = 10) -> str:
