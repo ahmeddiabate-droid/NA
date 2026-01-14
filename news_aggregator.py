@@ -6,8 +6,6 @@ Date: January 2026
 """
 
 import json
-import io
-import sys
 import requests
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
@@ -24,9 +22,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from urllib.parse import urljoin, quote
-
-# Fix Windows console encoding issuesif sys.platform == 'win32':     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
- 
 
 # Configure logging
 logging.basicConfig(
