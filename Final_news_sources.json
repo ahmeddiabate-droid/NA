@@ -12,7 +12,7 @@
       "category": "Federal Regulator",
       "url": "https://www.osfi-bsif.gc.ca/en/news",
       "type": "scrape",
-      "source_page": "https://www.osfi-bsif.gc.ca/en/news",
+      "source_page": "https://www.osfi-bsif.gc.ca/en/news"
     },
     {
       "name": "CAPSA",
@@ -40,28 +40,28 @@
       "category": "Pension Industry",
       "url": "https://www.fsrao.ca/announcements?keywords=&news_type=All&news_sectors=726&news_audience=All",
       "type": "scrape",
-      "source_page": "https://www.fsrao.ca/announcements?keywords=&news_type=All&news_sectors=726&news_audience=All",
+      "source_page": "https://www.fsrao.ca/announcements?keywords=&news_type=All&news_sectors=726&news_audience=All"
     },
     {
       "name": "BCFSA (BC Financial Services Authority)",
       "category": "Pension Industry",
       "url": "https://www.bcfsa.ca/about-us/news?search=&page=0&f%5B0%5D=industry%3Apensions",
       "type": "scrape",
-      "source_page": "https://www.bcfsa.ca/about-us/news?search=&page=0&f%5B0%5D=industry%3Apensions",
+      "source_page": "https://www.bcfsa.ca/about-us/news?search=&page=0&f%5B0%5D=industry%3Apensions"
     },
     {
       "name": "Retraite Quebec",
       "category": "Pension Industry",
       "url": "https://www.retraitequebec.gouv.qc.ca/fr/actualites/Pages/actualites.aspx",
       "type": "scrape",
-      "source_page": "https://www.retraitequebec.gouv.qc.ca/fr/actualites/Pages/actualites.aspx",
+      "source_page": "https://www.retraitequebec.gouv.qc.ca/fr/actualites/Pages/actualites.aspx"
     },
     {
       "name": "Retraite Quebec - 2025",
       "category": "Pension Industry",
       "url": "https://www.retraitequebec.gouv.qc.ca/fr/actualites/2025/Pages/liste-nouvelles.aspx",
       "type": "scrape",
-      "source_page": "https://www.retraitequebec.gouv.qc.ca/fr/actualites/2025/Pages/liste-nouvelles.aspx",
+      "source_page": "https://www.retraitequebec.gouv.qc.ca/fr/actualites/2025/Pages/liste-nouvelles.aspx"
     },
     {
       "name": "FCAA Saskatchewan",
@@ -75,7 +75,7 @@
       "category": "Pension Industry",
       "url": "https://fcnb.ca/en/news-alerts",
       "type": "scrape",
-      "source_page": "https://fcnb.ca/en/news-alerts",
+      "source_page": "https://fcnb.ca/en/news-alerts"
     },
     {
       "name": "Government of Manitoba Pensions",
@@ -89,14 +89,14 @@
       "category": "Pension Industry",
       "url": "https://www.gov.nl.ca/releases/thisweek/",
       "type": "scrape",
-      "source_page": "https://www.gov.nl.ca/releases/thisweek/",
+      "source_page": "https://www.gov.nl.ca/releases/thisweek/"
     },
     {
       "name": "Alberta Pensions",
       "category": "Pension Industry",
       "url": "https://www.alberta.ca/pensions-legislation-updates",
       "type": "scrape",
-      "source_page": "https://www.alberta.ca/pensions-legislation-updates",
+      "source_page": "https://www.alberta.ca/pensions-legislation-updates"
     },
     {
       "name": "The Royal Gazette (Bermuda)",
