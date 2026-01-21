@@ -250,7 +250,7 @@ class NewsAggregator:
             if len(articles) >= MAX_ARTICLES_PER_SOURCE: break
         return articles
 
-    def _scrape_retraite_quebec(self, soup: BeautifulSoup, base_url: str, source_name: str, category: str) -> List[Dict]:
+    def _scrape_retraitequebec(self, soup: BeautifulSoup, base_url: str, source_name: str, category: str) -> List[Dict]:
         articles = []
         h2_tags = soup.find_all('h2')
         for h2 in h2_tags:
