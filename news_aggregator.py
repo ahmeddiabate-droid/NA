@@ -249,8 +249,8 @@ class NewsAggregator:
         date_str= None 
         
         article = self._create_article(title_text, href, source_name, category, content, date_str)
-        if article: articles.append(article)
-        if len(articles) >= MAX_ARTICLES_PER_SOURCE: break
+            if article: articles.append(article)
+            if len(articles) >= MAX_ARTICLES_PER_SOURCE: break
     return articles
 
 
