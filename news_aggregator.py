@@ -237,22 +237,22 @@ class NewsAggregator:
             title_text = link.get_text("", strip = True)
             href = link["href"]
 
-        content =""
-        detail_div = h2.find_next_sibling("div", class_ = "detail")
+            content =""
+            detail_div = h2.find_next_sibling("div", class_ = "detail")
         
-        for s in detail_copy.find_all("span", class_="layout-actualites-date"):
-            s.decompose()
+            for s in detail_copy.find_all("span", class_="layout-actualites-date"):
+                s.decompose()
                
-        content = detail_copy.get_text (" ", strip = True)
+            content = detail_copy.get_text (" ", strip = True)
                 
          # Retraite Quebec usually has the date in a <time> or nearby
-        date_str= None 
+            date_str= None 
         
             article = self._create_article(title_text, href, source_name, category, content, date_str)
                 if article: 
                     articles.append(article)
                 if len(articles) >= MAX_ARTICLES_PER_SOURCE: 
-                    break
+                   break
         return articles
 
 
