@@ -234,9 +234,16 @@ class NewsAggregator:
         for h2 in h2_tags:
             link = h2.find("a", href=True)
             if not link: continue
-            title_text = link.get_text(" ", strip = True)
+            title_text = link.get_text("", strip = True)
             href = link["href"]
 
+            content =""
+            detail= h2.find_next_sibling("div", class_ ="detail")
+            if detail :
+                p = detail.find("p")
+                if p : 
+                    content = p.get_text(" ", strip=True)
+                
          # Retraite Quebec usually has the date in a <time> or nearby
             date_str= None 
           
