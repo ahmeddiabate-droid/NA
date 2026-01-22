@@ -232,9 +232,9 @@ class NewsAggregator:
         articles = []
         h2_tags =soup.find_all('a')
         for h2 in h2_tags:
-            link = a.find('a',href=True)
+            link = h2.find('h2',href=True)
             if not link: continue
-            title_text = self._clean_text(a.get_text())
+            title_text = self._clean_text(h2.get_text())
             if not title_text or len(title_text)<20 or 'Showing' in title_text: continue
             href = self._fix_relative_url(link['href'],base_url)
 
