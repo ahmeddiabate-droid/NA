@@ -238,15 +238,13 @@ class NewsAggregator:
             href = link["href"]
 
             content =""
-            detail= h2.find_next_sibling("div", class_ ="detail")
-            if detail :
-                p = detail.find("p")
-                if p : 
-                    content = p.get_text(" ", strip=True)
+           for s in detail_copy.find_all("span",class_="layout-actualites-date"):
+               s.decompose()
+               
+           content = return detail_copy.get_text (" ",strip = True)
                 
          # Retraite Quebec usually has the date in a <time> or nearby
             date_str= None 
-          
         
             article = self._create_article(title_text, href, source_name, category, content, date_str)
             if article: articles.append(article)
@@ -254,7 +252,8 @@ class NewsAggregator:
         return articles
 
 
-
+    def extract_detail -> str:
+        detail_copy = BeautifulSoup(str(detail_div),"html.parser")
     def _scrape_canada_news(self, soup: BeautifulSoup, base_url: str, source_name: str, category: str) -> List[Dict]:
         articles = []
         h3_tags = soup.find_all('h3')
