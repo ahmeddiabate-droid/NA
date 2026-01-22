@@ -232,11 +232,11 @@ class NewsAggregator:
         articles = []
         h2_tags =soup.find_all('a')
         for h2 in h2_tags:
-        link = a.find('a',href=True)
-        if not link: continue
-        title_text = self._clean_text(a.get_text())
-        if not title_text or len(title_text)<20 or 'Showing' in title_text: continue
-        href = self._fix_relative_url(link['href'],base_url)
+            link = a.find('a',href=True)
+            if not link: continue
+            title_text = self._clean_text(a.get_text())
+            if not title_text or len(title_text)<20 or 'Showing' in title_text: continue
+            href = self._fix_relative_url(link['href'],base_url)
 
          # Retraite Quebec usually has the date in a <time> or nearby
          date_str = None
