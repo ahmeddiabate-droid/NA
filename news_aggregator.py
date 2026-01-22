@@ -239,7 +239,6 @@ class NewsAggregator:
             href = self._fix_relative_url(link['href'],base_url)
 
          # Retraite Quebec usually has the date in a <time> or nearby
-         date_str = None
          detail_div=h2.find_next_sibling("div",class_="detail")
          date_span = detail_div.find("span", class_ = "layout-actualites-date")
          date_str= date_span.get_text(strip=True) if date_span else None
