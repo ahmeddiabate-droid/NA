@@ -254,7 +254,7 @@ class NewsAggregator:
     return articles
 
 
-    def extract_detail -> str:
+    def extract_detail_text_simple(detail_div) -> str:
         detail_copy = BeautifulSoup(str(detail_div), "html.parser")
     def _scrape_canada_news(self, soup: BeautifulSoup, base_url: str, source_name: str, category: str) -> List[Dict]:
         articles = []
