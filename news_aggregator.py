@@ -124,6 +124,8 @@ class NewsAggregator:
                 articles = self._scrape_fcaa(soup, url, source_name, category)
             elif "CRA" in source_name:
                 articles = self._scrape_canada_news(soup, url, source_name, category)
+            elif "Retraite Quebec" in source_name:
+                articles = self._scrape_retraite_quebec(soup, url, source_name, category)
             elif "OSFI" in source_name:
                 articles = self._scrape_osfi(soup, url, source_name, category)
             elif "FSRAO" in source_name:
@@ -225,6 +227,29 @@ class NewsAggregator:
                 if article: articles.append(article)
                 if len(articles) >= MAX_ARTICLES_PER_SOURCE: break
         return articles
+    
+    def _scrape_retraite_quebec(self, soup: BeautifulSoup,base_url:str,source_name:str, category: str) -> List[Dict]:
+        articles = []
+        h2_tags =soup.find_all('a')
+        for h2 in h2_tags:
+        link = a.find('a',href=True)
+        if not link: continue
+        title_text = self._clean_text(a.get_text())
+        if not title_text or len(title_text)<20 or 'Showing' in title_text: continue
+        href = self._fix_relative_url(link['href'],base_url)
+
+         # Retraite Quebec usually has the date in a <time> or nearby
+         date_str = None
+         detail_div=h2.find_next_sibling("div",class_="detail")
+         date_span = detail_div.find("span", class_ = "layout-actualites-date")
+         date_str= date_span.get_text(strip=True) if date_span else None
+        
+        article = self._create_article(title_text, href, source_name, category, "", date_str)
+            if article: articles.append(article)
+            if len(articles) >= MAX_ARTICLES_PER_SOURCE: break
+        return articles
+
+
 
     def _scrape_canada_news(self, soup: BeautifulSoup, base_url: str, source_name: str, category: str) -> List[Dict]:
         articles = []
