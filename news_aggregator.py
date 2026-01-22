@@ -248,7 +248,7 @@ class NewsAggregator:
          # Retraite Quebec usually has the date in a <time> or nearby
         date_str= None 
         
-        article = self._create_article(title_text, href, source_name, category, content, date_str)
+            article = self._create_article(title_text, href, source_name, category, content, date_str)
             if article: 
                 articles.append(article)
             if len(articles) >= MAX_ARTICLES_PER_SOURCE: 
