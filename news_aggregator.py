@@ -230,20 +230,16 @@ class NewsAggregator:
     
     def _scrape_retraite_quebec(self, soup: BeautifulSoup,base_url:str,source_name:str, category: str) -> List[Dict]:
         articles = []
-        h2_tags =soup.find_all('a')
+        h2_tags =soup.find_all('h2', class_ = "layout-actualites") 
         for h2 in h2_tags:
-            link = h2.find('h2',href=True)
+            link = h2.find("a", href=True)
             if not link: continue
-            title_text = self._clean_text(h2.get_text())
-            if not title_text or len(title_text)<20 or 'Showing' in title_text: continue
-            href = self._fix_relative_url(link['href'],base_url)
+            title_text = link.get_text(" ", strip = True)
+            href = link["href"]
 
          # Retraite Quebec usually has the date in a <time> or nearby
             date_str= None 
-            detail_div=h2.find_next_sibling("div",class_="detail")
-            if detail_div :
-             date_span = detail_div.find("span", class_ = "layout-actualites-date")
-             date_str= date_span.get_text(strip=True) if date_span else None
+          
         
             article = self._create_article(title_text, href, source_name, category, "", date_str)
             if article: articles.append(article)
