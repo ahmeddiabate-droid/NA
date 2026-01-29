@@ -284,7 +284,7 @@ class NewsAggregator:
 
             
                 # Work on a copy; remove date span(s), then get remaining text (p + lists)
-                detail_copy = BeautifulSoup(str(detail_div), "html.parser")
+                detail_copy = BeautifulSoup(str(content_div), "html.parser")
                 for s in detail_copy.find_all("span", class_="layout-actualites-date"):
                     s.decompose()
                     
