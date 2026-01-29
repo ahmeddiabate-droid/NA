@@ -278,11 +278,17 @@ class NewsAggregator:
                 if date_span:
                     date_str = date_span.get_text(strip=True)
 
+            content_div = soup.select_one("h2.layout-actualites + div.detail")
+            if content_ div:
+                html_block = str(content_div)
+
+            
                 # Work on a copy; remove date span(s), then get remaining text (p + lists)
                 detail_copy = BeautifulSoup(str(detail_div), "html.parser")
                 for s in detail_copy.find_all("span", class_="layout-actualites-date"):
                     s.decompose()
-                content = detail_copy.get_text(" ", strip=True)
+                    
+                content = content_div.get_text(separator="\n", strip=True)
 
             article = self._create_article(title_text, href, source_name, category, content, date_str)
             if article:
