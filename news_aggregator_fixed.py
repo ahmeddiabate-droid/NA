@@ -269,7 +269,7 @@ class NewsAggregator:
             href = self._fix_relative_url(link["href"], base_url)
 
             # Grab sibling <div class="detail">; remove the date span, then extract text
-            content = ""
+            content = " "
             date_str = None
 
             detail_div = h2.find_next_sibling("div", class_="detail")
