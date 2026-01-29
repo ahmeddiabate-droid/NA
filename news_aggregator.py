@@ -237,6 +237,7 @@ class NewsAggregator:
             title_text = link.get_text("", strip = True)
             href = link["href"]
 
+            content = " "
             detail_div = h2.find_next_sibling("div", class_ = "detail")
         
             for s in detail_copy.find_all("span", class_="layout-actualites-date"):
