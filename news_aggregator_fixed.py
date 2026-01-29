@@ -288,9 +288,9 @@ class NewsAggregator:
                 for s in detail_copy.find_all("span", class_="layout-actualites-date"):
                     s.decompose()
                     
-                content = content_div.get_text(separator="\n", strip=True)
+                content1 = content_div.get_text(separator="\n", strip=True)
 
-            article = self._create_article(title_text, href, source_name, category, content, date_str)
+            article = self._create_article(title_text, href, source_name, category, content1, date_str)
             if article:
                 articles.append(article)
             if len(articles) >= MAX_ARTICLES_PER_SOURCE:
