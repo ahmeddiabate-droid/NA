@@ -279,7 +279,7 @@ class NewsAggregator:
                     date_str = date_span.get_text(strip=True)
 
             content_div = soup.select_one("h2.layout-actualites + div.detail")
-            if content_ div:
+            if content_div:
                 html_block = str(content_div)
 
             
