@@ -269,10 +269,9 @@ class NewsAggregator:
             href = self._fix_relative_url(link["href"], base_url)
 
             # Grab sibling <div class="detail">; remove the date span, then extract text
-            content = ""
             date_str = None
 
-            detail_div = h2.find_next("div", class_="detail")
+            detail_div = h2.find_next_sibling("div", class_="detail")
             if detail_div:
                 # Extract date from original node
                 date_span = detail_div.find("span", class_="layout-actualites-date")
