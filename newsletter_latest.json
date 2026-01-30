@@ -54,6 +54,7 @@
       "source": "L'expert",
       "category": "Pension Industry",
       "extraction_method": "scrape"
+    },
     {
       "title": "Blakes, Allen & Overy, and Wachtell Steer Largest Bank Deal in Canadian History",
       "url": "https://www.blakes.com/about/media-centre/blakes-allen-overy-and-wachtell-steer-largest-bank-deal-in-canadian-history/",
@@ -201,3 +202,4 @@
   ]
 
 }
+
