@@ -168,7 +168,7 @@
       "url": "https://www.bmkplaw.com/what-we-think/news-and-updates/manitoba-pension-commission-updates-lira-and-lif-bulletins.html",
       "date": "2026-01-29",
       "content": "Manitoba’s Office of the Superintendent – Pension Commission has issued updated policy bulletins regarding Locked-in Retirement Accounts (LIRAs), Life Income Funds (LIFs), and withdrawals from such accounts.",
-      "source": "BMKP Law"
+      "source": "BMKP Law",
       "category": "Pension Industry",
       "extraction_method": "scrape"
     },
@@ -177,7 +177,7 @@
       "url": "https://www.bmkplaw.com/what-we-think/news-and-updates/canada-retains-top-position-in-global-pension-transparency-benchmark.html",
       "date": "2026-10-27",
       "content": "The 2025 Global Pension Transparency Benchmark (“GPTB”) has ranked Canada first overall among the 15 countries assessed for the fifth consecutive year.The GPTB assesses 15 countries by reviewing the public disclosures of the five largest pension fund organizations in each jurisdiction.  It focusses on transparency and disclosure quality, with quality relating to completeness, clarity, information value and comparability of disclosures. Canada’s major public-sector pension funds – CPP Investments, CDPQ, BCI, OTPP, and PSP – earned top scores for governance, performance, and responsible investing disclosure practices. The country’s overall score was eight points higher than Australia and the Netherlands, which tied for second place. Among individual funds, CPP Investments ranked second globally to Norway’s Government Pension Fund Global.",
-      "source": "BMKP Law"
+      "source": "BMKP Law",
       "category": "Pension Industry",
       "extraction_method": "scrape"
     },
@@ -202,5 +202,6 @@
   ]
 
 }
+
 
 
