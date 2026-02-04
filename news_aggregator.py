@@ -124,8 +124,6 @@ class NewsAggregator:
                 articles = self._scrape_fcaa(soup, url, source_name, category)
             elif "CRA" in source_name:
                 articles = self._scrape_canada_news(soup, url, source_name, category)
-            elif "Retraite Quebec" in source_name:
-                articles = self._scrape_retraite_quebec(soup, url, source_name, category)
             elif "OSFI" in source_name:
                 articles = self._scrape_osfi(soup, url, source_name, category)
             elif "FSRAO" in source_name:
@@ -227,36 +225,7 @@ class NewsAggregator:
                 if article: articles.append(article)
                 if len(articles) >= MAX_ARTICLES_PER_SOURCE: break
         return articles
-    
-    def _scrape_retraite_quebec(self, soup: BeautifulSoup,base_url:str,source_name:str, category: str) -> List[Dict]:
-        articles = []
-        h2_tags =soup.find_all('h2', class_ = "layout-actualites") 
-        for h2 in h2_tags:
-            link = h2.find("a", href=True)
-            if not link: continue
-            title_text = link.get_text("", strip = True)
-            href = link["href"]
 
-            content = " "
-            detail_div = h2.find_next_sibling("div", class_ = "detail")
-        
-            for s in detail_copy.find_all("span", class_="layout-actualites-date"):
-                s.decompose()
-               
-            content = detail_copy.get_text (" ", strip = True)
-                
-         # Retraite Quebec usually has the date in a <time> or nearby
-            date_str= None 
-        
-            article = self._create_article(title_text, href, source_name, category, content, date_str)
-            if article: articles.append(article)
-            if len(articles) >= MAX_ARTICLES_PER_SOURCE: break
-        return articles
-
-
-    def extract_detail_text_simple(detail_div) -> str:
-        detail_copy = BeautifulSoup(str(detail_div), "html.parser")
-        
     def _scrape_canada_news(self, soup: BeautifulSoup, base_url: str, source_name: str, category: str) -> List[Dict]:
         articles = []
         h3_tags = soup.find_all('h3')
@@ -267,7 +236,7 @@ class NewsAggregator:
             if not title_text or len(title_text) < 20 or 'Showing' in title_text: continue
             href = self._fix_relative_url(link['href'], base_url)
             
-            # Canada.ca usually has the date in a <span> or nearby
+            # Canada.ca usually has the date in a <time> or nearby
             date_str = None
             parent = h3.find_parent('div')
             if parent:
