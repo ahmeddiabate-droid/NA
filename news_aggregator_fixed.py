@@ -311,6 +311,9 @@ class NewsAggregator:
     def _scrape_canada_news(self, soup: BeautifulSoup, base_url: str, source_name: str, category: str) -> List[Dict]:
         articles: List[Dict] = []
         h3_tags = soup.find_all('h3')
+        
+        cutoff_date = datetime.now() - timedelta(days=DAYS_LOOKBACK)
+
         for h3 in h3_tags:
             link = h3.find('a', href=True)
             if not link:
@@ -327,7 +330,35 @@ class NewsAggregator:
             if parent:
                 time_tag = parent.find('time')
                 if time_tag:
-                    date_str = time_tag.get_text().strip()
+                    
+                    if time_tag.has_attr('datetime') and time_tag['datetime']:
+                    date_str = time_tag['datetime'][:10]  # take 'YYYY-MM-DD'
+                    else:
+                        date_str = time_tag.get_text().strip()
+                within_range = True
+                if date_str:
+                    parsed = None
+                    
+                iso_match = re.search(r'\b(\d{4})-(\d{2})-(\d{2})\b', date_str)
+                if iso_match:
+                y, m, d = map(int, iso_match.groups())
+                parsed = datetime(y, m, d)
+            else:
+                # Try English "Month DD, YYYY" quickly (keeps it simple)
+                try:
+                    cleaned = date_str.replace(',', '').strip()
+                    parsed = datetime.strptime(cleaned, '%B %d %Y')
+                except Exception:
+                    parsed = None
+
+            if parsed:
+                if parsed < cutoff_date:
+                    within_range = False
+
+        if not within_range:
+            continue
+        # --- end lookback gate ---
+
 
             article = self._create_article(title_text, href, source_name, category, "", date_str)
             if article:
@@ -335,6 +366,7 @@ class NewsAggregator:
             if len(articles) >= MAX_ARTICLES_PER_SOURCE:
                 break
         return articles
+        
 
     def _scrape_osfi(self, soup: BeautifulSoup, base_url: str, source_name: str, category: str) -> List[Dict]:
         articles: List[Dict] = []
